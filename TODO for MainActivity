@@ -1,0 +1,51 @@
+public class MainActivity extends AppCompatActivity {
+
+    // TODO 1) keys for reading data from SharedPreferences , two strings are keyname
+    public static final String CHOICES = "pref_numberOfChoices"; //value = 6
+    public static final String REGIONS = "pref_regionsToInclude"; //value = asia
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //// TODO 2) Create a quizfragment instance
+        MainActivityFragment quizFragment = (MainActivityFragment)
+                getSupportFragmentManager().findFragmentById(R.id.quizFragment);
+
+        //TODO 3) This method is for updating the options
+        quizFragment.updateGuessRows(PreferenceManager
+                .getDefaultSharedPreferences(this));
+
+       //TODO 4) this method is for updating the regions
+        quizFragment.updateRegions(PreferenceManager
+                .getDefaultSharedPreferences(this));
+
+        //TODO 10) Call a method to start the quiz
+        quizFragment.startQuiz();
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        Intent preferencesIntent = new Intent(this, SettingsActivity.class);
+        startActivity(preferencesIntent);
+        return super.onOptionsItemSelected(item);
+    }
+}
