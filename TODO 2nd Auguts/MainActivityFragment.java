@@ -1,4 +1,7 @@
-
+// Code for adding buttons
+// place this code in loadtheflag() method . This method is
+// ADDING BUTTONS AND SETTING TEXT ON OPTIONS
+// RANDOMLY SELECT ONE BUTTON FOR CORRECT ANSWER
 
 //TODO 14) Add buttons in your view
         // put the correct answer at the end of fileNameList
