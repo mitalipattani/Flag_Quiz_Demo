@@ -1,0 +1,9 @@
+1) Calculate the result
+    Count the number of guesses
+  
+2) create an ALERTDIALOG with RESET QUIZ and CANCEL BUTTON
+       Set its message as Result is no. of guess = 10
+       set its positive button to RESET QUIZ and clicking on it will restart the quiz
+       set its negative button to CANCEL and clicking on it dont do anything.
+       
+3) Apply the shake animation on flagImageView. when user choose incorrect option flag should shake 2 times.
