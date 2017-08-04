@@ -1,0 +1,31 @@
+Creating content_main.xml for Tablets in Landscape Orientation
+
+To create the layout, perform the following steps:
+            1. Right click the project’s res/layout folder, and select New > Layout resource file.
+            2. Enter content_main.xml in the File name field of the New Resource File dialog.
+            3. Ensure that LinearLayout is specified in the Root element field.
+            4. In the Available qualifiers list, select the Smallest Screen Width qualifier, then click the >> button to add the qualifier                to the Chosen Qualifiers list and set its value to 700—the layout is meant for screens that are at least 700 pixels wide.
+            5. In the Available qualifiers list, select the Orientation qualifier, then click the >> button to add the qualifier to the                  Chosen Qualifiers list and set its value to Landscape.
+            6. Click OK.
+            
+This creates the new content_main.xml file, which is stored in a res subfolder named indicating that the layout should be used only on a device with a minumum screen width (sw) of 700dp and only when the device is in landscape (land) orientation. Android uses the qualifiers sw and land to select appropriate resources at runtime.
+
+In Android Studio, the Project window does not show the separate layout and layout-sw700dp-land folders that you’ll see if you explore the project’s folders on disk.Instead, it combines both layouts into a single node content_main.xml (2) node in the Project window’s res/layout folder—(2) indicates that there are two layouts in the node.
+              Expanding this node shows
+              • content_main.xml and
+              • content_main.xml (sw700dp-land).
+              
+The layout without qualifiers in parentheses is the default layout. The one with qualifiers is used only if appropriate. After creating the file, Android Studio opens the layout in the layout editor. The Design view presents the layout in layout orientation.
+
+Creating the Tablet Layout’s GUI
+                you’ll build the tablet layout’s GUI
+                1.Select LinearLayout (vertical) and set the orientation property to horizontal 
+                2. goto Design tab. Click <fragment> in the Palette and drage it onto your layout. In the Fragments dialog, select                         SettingsActivityFragment, and click OK. This adds the <fragment> to the layout. Set the id of the <fragment> to                           settingsActivityFragment.
+                3.Repeat the preceding step, but this time select MainActivityFragment. Also, set the id of this <fragment> to             quizFragment
+                4. Select the settingsActivityFragment and layout:width to 0dp, layout:height to match_parent and layout:weight to 1.
+                 5. Select the quizFragment node. Set layout:width to 0dp,layout:height to match_parent and layout:weight to 2.    
+                 MainActivityFragment’s layout:weight is 2 and SettingsActivityFragment’s is 1, so the total of the
+                 weights is 3 and MainActivityFragment will occupy two-thirds of the layout’s horizontal space.
+                6. Add the following two lines to the opening Linear Layout tag to ensure that the top of the layout appears below the app bar, rather than behind it:
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
